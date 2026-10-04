@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NewsLens · Fake News Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <header><a class="brand" href="/">◈ NewsLens</a><span class="badge">Machine learning project</span></header>
+    <section class="intro">
+      <p class="eyebrow">READ WITH A SECOND PERSPECTIVE</p>
+      <h1>Look closer at<br>the news you read.</h1>
+      <p class="description">Explore whether an article's language resembles genuine or potentially fake news in our training dataset.</p>
+    </section>
+    <div class="workspace">
+      <section class="card input-card">
+        <div class="card-heading"><h2>Check an article</h2><span>01 / INPUT</span></div>
+        <p class="muted">Paste the article body. A headline alone isn't enough.</p>
+        {% if not ready %}<p class="alert" role="alert">The model is not ready. Run <code>python -m src.train</code> first.</p>{% endif %}
+        {% if error %}<p class="alert" role="alert">{{ error }}</p>{% endif %}
+        <form method="post" action="/">
+          <label for="title">Headline <span class="optional">optional</span></label>
+          <input id="title" name="title" maxlength="300" placeholder="Enter the article headline" value="{{ title }}">
+          <label for="article">Article text</label>
+          <textarea id="article" name="article" required maxlength="50000" rows="12" placeholder="Paste the full news article here…">{{ article }}</textarea>
+          <div class="form-footer"><span class="muted">10 words minimum · 50,000 characters maximum</span><button type="submit" {% if not ready %}disabled{% endif %}>Analyze article <span aria-hidden="true">↗</span></button></div>
+        </form>
+      </section>
+      <aside>
+        <section class="card result-card" aria-live="polite">
+          <div class="card-heading"><h2>Your result</h2><span>02 / INSIGHT</span></div>
+          {% if result %}
+          <div class="result-icon {{ 'fake' if result.class_id else 'genuine' }}" aria-hidden="true">{{ '!' if result.class_id else '✓' }}</div>
+          <p class="eyebrow">MODEL PREDICTION</p>
+          <h3 class="{{ 'fake-text' if result.class_id else 'genuine-text' }}">{{ result.label }}</h3>
+          <p class="muted">{{ 'The language resembles articles labeled fake in the training data. Check the original source and supporting evidence.' if result.class_id else 'The language resembles articles labeled genuine in the training data. Check the source and supporting evidence before relying on it.' }}</p>
+          {% else %}
+          <div class="result-icon idle" aria-hidden="true">◈</div>
+          <h3>A little more context.</h3>
+          <p class="muted">Your prediction will appear here after you submit an article.</p>
+          {% endif %}
+          <div class="model-info"><span>Classifier</span><strong>{{ model_name }}</strong></div>
+        </section>
+        <section class="note"><h3>A signal, not a fact check.</h3><p>This system learns writing patterns. It cannot verify claims, and its predictions may be wrong for unfamiliar sources or topics.</p></section>
+      </aside>
+    </div>
+    <footer>TF-IDF + linguistic features <span>Built with Python & Flask</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "best_model": "random_forest",
+  "selected_k": 3000,
+  "seed": 42,
+  "cv_rows": 6000,
+  "cv_folds": 3,
+  "dataset": {
+    "raw_rows": 44898,
+    "raw_class_counts": {
+      "0": 21417,
+      "1": 23481
+    },
+    "empty_articles_removed": 631,
+    "conflicting_label_rows_removed": 0,
+    "exact_duplicates_removed": 5899,
+    "conflicting_prefix_rows_removed": 0,
+    "repeated_prefix_rows_removed": 10,
+    "clean_rows": 38358,
+    "clean_class_counts": {
+      "0": 20918,
+      "1": 17440
+    },
+    "split_sizes": {
+      "train": 26850,
+      "validation": 5754,
+      "test": 5754
+    }
+  },
+  "versions": {
+    "python": "3.13.3",
+    "sklearn": "1.7.2",
+    "xgboost": "3.4.1",
+    "numpy": "2.3.3",
+    "pandas": "2.3.2"
+  },
+  "models": {
+    "linear_svm": {
+      "file": "linear_svm.pkl",
+      "best_params": {
+        "classifier__C": 2.0
+      },
+      "cv_macro_f1": 0.9934445352655512,
+      "validation": {
+        "accuracy": 0.9966979492526937,
+        "macro_f1": 0.9966698016292159,
+        "fake_precision": 0.9977002683020314,
+        "fake_recall": 0.9950305810397554,
+        "fake_f1": 0.9963636363636363
+      },
+      "training_seconds": 56.029182299999775,
+      "tuning_seconds": 55.47422119999919
+    },
+    "random_forest": {
+      "file": "random_forest.pkl",
+      "best_params": {
+        "classifier__max_depth": null
+      },
+      "cv_macro_f1": 0.9951265036716869,
+      "validation": {
+        "accuracy": 0.9970455335418839,
+        "macro_f1": 0.9970203488261405,
+        "fake_precision": 0.9980835569183595,
+        "fake_recall": 0.9954128440366973,
+        "fake_f1": 0.9967464114832536
+      },
+      "training_seconds": 67.05988669999897,
+      "tuning_seconds": 66.50396449999971
+    },
+    "xgboost": {
+      "file": "xgboost.pkl",
+      "best_params": {
+        "classifier__max_depth": 6
+      },
+      "cv_macro_f1": 0.9963003775910545,
+      "validation": {
+        "accuracy": 0.9970455335418839,
+        "macro_f1": 0.9970201563947237,
+        "fake_precision": 0.9984656693517453,
+        "fake_recall": 0.9950305810397554,
+        "fake_f1": 0.996745165613632
+      },
+      "training_seconds": 52.042477599999984,
+      "tuning_seconds": 92.53824589999931
+    }
+  }
+}

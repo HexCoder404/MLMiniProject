@@ -1,0 +1,22 @@
+{
+  "raw_rows": 44898,
+  "raw_class_counts": {
+    "0": 21417,
+    "1": 23481
+  },
+  "empty_articles_removed": 631,
+  "conflicting_label_rows_removed": 0,
+  "exact_duplicates_removed": 5899,
+  "conflicting_prefix_rows_removed": 0,
+  "repeated_prefix_rows_removed": 10,
+  "clean_rows": 38358,
+  "clean_class_counts": {
+    "0": 20918,
+    "1": 17440
+  },
+  "split_sizes": {
+    "train": 26850,
+    "validation": 5754,
+    "test": 5754
+  }
+}

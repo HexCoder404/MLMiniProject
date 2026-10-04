@@ -1,0 +1,57 @@
+{
+  "raw_rows": 44898,
+  "raw_class_counts": {
+    "0": 21417,
+    "1": 23481
+  },
+  "subject_counts_by_label": {
+    "Genuine": {
+      "politicsNews": 11272,
+      "worldnews": 10145
+    },
+    "Potentially fake": {
+      "News": 9050,
+      "politics": 6841,
+      "left-news": 4459,
+      "Government News": 1570,
+      "US_News": 783,
+      "Middle-east": 778
+    }
+  },
+  "reuters_marker_fraction_by_label": {
+    "Genuine": 0.9981790166690012,
+    "Potentially fake": 0.013116988203228142
+  },
+  "empty_articles_removed": 631,
+  "conflicting_label_rows_removed": 0,
+  "exact_duplicates_removed": 5899,
+  "conflicting_prefix_rows_removed": 0,
+  "repeated_prefix_rows_removed": 10,
+  "clean_rows": 38358,
+  "clean_class_counts": {
+    "0": 20918,
+    "1": 17440
+  },
+  "word_count_summary": {
+    "Genuine": {
+      "count": 20918.0,
+      "mean": 384.7396500621474,
+      "std": 273.2235509058921,
+      "min": 22.0,
+      "25%": 149.0,
+      "50%": 359.0,
+      "75%": 522.0,
+      "max": 5172.0
+    },
+    "Potentially fake": {
+      "count": 17440.0,
+      "mean": 425.0059633027523,
+      "std": 354.95870358888476,
+      "min": 1.0,
+      "25%": 277.0,
+      "50%": 376.0,
+      "75%": 503.0,
+      "max": 8135.0
+    }
+  }
+}
